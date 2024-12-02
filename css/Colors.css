@@ -1,0 +1,35 @@
+/* 
+    css files that defines colors used by the site
+*/
+
+:root {
+    --mainBG: #6d6d6d;
+
+    --shopBg: #4c4c4c;
+    --shopShadow: #0a0a0a;
+    --shopTitleBg: #705555;
+
+    --topBarBg: #4c4c4c;
+    --topBarShadow: black;
+
+    --currencyBg: #442d2d;
+
+    --TimerBG: #4c4c4c;
+    
+    /* Hp bar */
+    --hpBarBg: #353333;
+    --hpBarShadow: #0a0a0a;
+    --hpBarFill: #a31010;
+
+    /* button styles */
+    --buttonBG: #a5a5a5;
+    --buttonHoverBg: #6d6d6d;
+    --buttonShadow: #0a0a0a;
+
+    --shopButtonBG: #a5a5a5;
+    --shopButtonHoverBg: #6d6d6d;
+    --shopButtonShadow: #0a0a0a;
+
+    --mainText: #dfd5d5;
+    --secondaryText: #aaa9a9;
+}

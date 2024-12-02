@@ -1,0 +1,298 @@
+/* 
+    css files that defines main or default style of the site
+*/
+@import url(Text.css);
+@import url(Colors.css);
+
+
+body {
+    overflow: hidden;
+    background-color: var(--mainBG);
+
+    margin: 0;
+    padding: 0;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+.hidden {
+    display: none;
+}
+
+.spanAllColumns {
+    grid-column: 1 / -1;
+}
+
+/* 
+---------------------------------------------------------------------------
+    defining styles for the game's title screen
+---------------------------------------------------------------------------
+*/
+#TitleScreen {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+
+}
+
+#TitleScreen div {
+    width: 500px;
+    height: auto;
+}
+
+#TitleScreen h1 {
+    color: var(--mainText);
+    font-size: 3em;
+
+}
+
+#TitleScreen button {
+    cursor: pointer;
+
+    background-color: var(--buttonBG);
+    box-shadow: 10px 10px 5px var(--buttonShadow);
+
+
+    width: 100%;
+    height: 50%;
+
+    padding: 5px;
+}
+
+#TitleScreen button:hover {
+    background-color: var(--buttonHoverBg);
+}
+
+#TitleScreen button:active {
+    box-shadow: none;
+}
+
+/* 
+---------------------------------------------------------------------------
+    defining styles for the game screen
+---------------------------------------------------------------------------
+*/
+
+#GameScreen {
+    display: grid;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: .5fr 5fr;
+    width: 100%;
+    height: 95%;
+}
+
+/* defining styles for the top bar */
+
+#TopBar {
+    display: grid;
+    grid-column: 1 / -1;
+
+    grid-template-columns: 1fr 2fr 2fr;
+    grid-gap: 10px;
+
+    background-color: var(--topBarBg);
+    box-shadow: 0px 10px 10px var(--topBarShadow);
+    z-index: 1;
+    width: auto;
+
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#Counters {
+    display: flex;
+    justify-content: space-around;
+    place-content: center;
+
+    background-color: var(--currencyBg);
+    box-shadow: inset 0px 5px 10px black;
+
+    border-radius: 15px;
+    padding: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#Counters  h2 {
+    place-self: center;
+
+    margin: 0px;
+}
+
+#Counters  img {
+    place-self: center;
+    margin: 0px;
+}
+
+/* defining styles for the upgrade panel */
+
+#shopContainer {
+    display: inline-block;
+    position: relative;
+
+    width: 100%;
+}
+
+#ShopToggleButton {
+    cursor: pointer;
+
+    background-color: var(--buttonBG);
+    box-shadow: 0px 5px 10px var(--buttonShadow);
+
+    width: 100%;
+
+    padding: 5px;
+}
+
+#ShopToggleButton:hover {
+    background-color: var(--buttonHoverBg);
+}
+
+#ShopToggleButton:active {
+    box-shadow: none;
+}
+
+#UpgradeShop {
+    position: absolute;
+    overflow-y: auto;
+    place-items: center;
+
+    background-color: var(--shopBg);
+
+    width: 100%;
+    height: 700px;
+
+    box-shadow: -5px 10px 10px var(--shopShadow),
+        1px 10px 10px var(--shopShadow);
+
+    padding-bottom: 10px;
+}
+
+#UpgradeShop h2 {
+    background-color: var(--shopTitleBg);
+
+    width: 90%;
+    margin: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#UpgradeShop div {
+    display: block;
+    place-items: center;
+
+    width: 90%;
+    height: auto;
+
+    padding: 5px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
+
+#UpgradeShop div button {
+    display: block;
+
+    cursor: pointer;
+
+    background-color: var(--shopButtonBG);
+    box-shadow: 0px 5px 10px var(--shopButtonShadow);
+    text-shadow: 2px 2px 2px #000000;
+
+    width: 90%;
+    padding: 5px;
+    margin: 10px;
+}
+
+#UpgradeShop div button:hover {
+    background-color: var(--shopButtonHoverBg);
+}
+
+#UpgradeShop div button:active {
+    box-shadow: none;
+}
+
+/* defining the style for the slime button */
+
+#SlimeSection {
+    display: grid;
+    place-items: center;
+    grid-template-rows: 1fr 3fr;
+    grid-template-columns: 1fr;
+    width: 100%;
+    height: 100%;
+}
+
+#Slime {
+    cursor: pointer;
+
+    place-items: center;
+}
+
+#Slime img {
+    width: 100%;
+    height: 200px;
+}
+
+/* hp bar style */
+
+#HPContainer {
+    width: 400px;
+    height: 100px;
+    background-color: var(--hpBarBg);
+    box-shadow: 0px 10px 5px var(--hpBarShadow);
+
+    border-radius: 15px;
+    padding: 10px;
+}
+
+#HPBar {
+    background-color: var(--hpBarFill);
+    box-shadow: inset 0px 5px 10px black;
+
+    align-content: center;
+    place-items: center;
+
+    /* width: 100%; */
+    height: 100%;
+
+    border-radius: 15px;
+}
+
+#HPBar p {
+    padding: 0px;
+    margin: 0px;
+}
+
+/* cool down timer */
+#TimerContainer{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+
+    width: 100%;
+    height: 100%;
+}
+
+#TimerContainer h2{
+    align-self: center;
+    align-content: center;
+    place-items: center;
+
+    background-color: var(--TimerBG);
+    box-shadow: 0px 10px 10px black;
+
+    text-shadow: 2px 2px 2px #000000;
+    text-align: center;
+
+    border-radius: 15px;
+    width: 500px;
+    height: 100px;
+}

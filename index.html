@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Slime Clicker</title>
+    <link rel="stylesheet" href="css/SiteStyle.css">
+</head>
+
+<body>
+    <!-- title screen page -->
+    <section id="TitleScreen">
+        <div>
+            <h1 class="centeredText shadowText">Slime Clicker</h1>
+            <button id="startButton">
+                <h2 class="shadowText">Start Game</h2>
+            </button>
+        </div>
+    </section>
+
+    <!-- game page -->
+    <section id="GameScreen">
+
+        <!-- top bar -->
+        <div id="TopBar">
+            <h1 class="shadowText">Slime Clicker</h1>
+
+            <div id="Counters">
+                <img src="images/slimeBall.png" alt="SlimeBall" id="SlimeBallImg">
+                <h2 class="shadowText" id="SlimeBallCount">
+                    : 0
+                </h2>
+            </div>
+
+            <!-- upgrade shop -->
+            <section id=shopContainer>
+                <button id="ShopToggleButton">
+                    <h2 class="shadowText">Upgrades</h2>
+                </button>
+
+                <section id="UpgradeShop">
+                    <div>
+                        <button>
+                            <h3>Upgrade 1 | LV 1</h3>
+
+                            <h4>Cost: 10 <img src="images/slimeBall.png" alt="Slime" id="Slime"></h4>
+                        </button>
+
+                        <button>
+                            <h3>Upgrade 2 | LV 1</h3>
+
+                            <h4>Cost: 10 Slime</h4>
+                        </button>
+
+                    </div>
+                </section>
+            </section>
+
+        </div>
+
+        <!-- slime button -->
+        <div id="SlimeSection">
+            <div id='HPContainer'>
+                <div Id='HPBar'> </div>
+            </div>
+
+            <div id="Slime">
+                <img src="images/slime.png" alt="Slime">
+                <h2class="shadowText">Click Me!</h2>
+            </div>
+        </div>
+
+        <!-- Cool down timer -->
+        <div id="TimerContainer">
+            <h2 id="TimerText" class="centeredText shadowText"> </h2>
+        </div>
+
+    </section>
+
+    <!-- scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous">
+        </script>
+
+    <script type="module" src="js/main.js"></script>
+    <!-- <script src="js/main.js"></script> -->
+
+</body>
+
+</html>
