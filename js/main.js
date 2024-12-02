@@ -14,7 +14,7 @@ import UpgradeShop from './UpgradeShop.js';
 //clicker variables/stats
 export var slimeBallCount = 0;
 var attackDamage = 1; // controls how fast you kill a slime
-var slimePerClick = 1; // multiplier for how many slime balls you get per click
+// var slimePerClick = 1; // multiplier for how many slime balls you get per click
 
 var walkSpeed = 10; // speed of cool down between slime group spawns
 
@@ -26,7 +26,8 @@ var slimes = [
 ]; // array of slimes
 var currentSlime = 0; // index of the current slime
 var slimeGroupSize = 0;
-var slimeGroupMaxSize = 5;
+var slimeGroupOffsetSize = 0;
+export var slimeGroupMaxSize = 5;
 
 //upgrade shop variables
 var upgradeShop = new UpgradeShop();
@@ -55,6 +56,8 @@ $("#startButton").on('click', function () {
 slimeButton.on('click', function () { attackSlime() });
 
 upgradeShopButton.on('click', function () { upgradeShop.toggleShop() });
+
+
 /*
 --------------------------------------------------------------------------
     functions
@@ -92,7 +95,6 @@ function attackSlime() {
 
 }
 
-
 //  starts the timer meant to act as a cool down between slime spawns
 function startTimer() {
     timer.fadeIn();
@@ -115,7 +117,7 @@ function startTimer() {
 
 //starts the next encounter after the timer is done
 function StartEncounter() {
-    slimeGroupSize = Math.floor(Math.random() * slimeGroupMaxSize);
+    slimeGroupSize = Math.floor(Math.random() * slimeGroupMaxSize) + slimeGroupOffsetSize;
 
     currentSlime = getSlimeIndex();
     if (!slimes[currentSlime].isAlive) {
@@ -148,13 +150,18 @@ export function UpdateWalkSpeed(amt) {
 }
 
 export function UpdateAttackDamage(amt) {
+    console.log(amt);
     attackDamage += amt;
 }
 
-export function UpdateSlimePerClick(amt) {
-    slimePerClick += amt;
-}
+// export function UpdateSlimePerClick(amt) {
+//     slimePerClick += amt;
+// }
 
 export function UpdateSlimeGroupSize(amt) {
     slimeGroupMaxSize += amt;
+}
+
+export function UpdateSlimesPerGroup(amt) {
+    slimeGroupOffsetSize += amt;
 }

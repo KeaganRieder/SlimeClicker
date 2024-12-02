@@ -16,7 +16,7 @@ class shopButton {
 
         this.cantAffordTimer;
 
-        this.statToUpgrade = statToUpgrade;
+        this.statToUpgrade = statToUpgrade; //need to fix
 
         this.button = document.createElement('button');
 
@@ -40,12 +40,11 @@ class shopButton {
 
         $('#UpgradeShop').find('#UpgradeButtonContainer').append(this.button);
 
-        this.button.addEventListener('click', () => { this.buyUpgrade(); });
+        this.button.addEventListener('click', () => this.buyUpgrade());
     }
 
     //buys the upgrade
     buyUpgrade() {
-        console.log("buying upgrade" + this.name);
         if (this.lvl >= this.maxLvl) {
             //do nothing sense level maxed
             return;
@@ -53,9 +52,10 @@ class shopButton {
         }
         else if (slimeBallCount >= this.cost) {
             this.lvl++;
-            var statUp = this.amountPerLvl * this.lvl;
+            this.increment = this.amountPerLvl * this.lvl;
+            console.log("buying upgrade " + this.increment);
 
-            this.statToUpgrade(statUp);
+            this.statToUpgrade(this.increment);
             updateSlimeBallCount(-this.cost);
 
             this.cost *= this.lvl;
