@@ -7,7 +7,8 @@
 
 body {
     overflow: hidden;
-    background-color: var(--mainBG);
+    background: linear-gradient(to bottom, var(--mainBGTop), var(--mainBGBot));
+    /* //var(--mainBG); */
 
     margin: 0;
     padding: 0;
@@ -83,7 +84,7 @@ body {
     display: grid;
 
     grid-template-columns: 1fr;
-    grid-template-rows: .5fr 5fr;
+    grid-template-rows: .1fr 8fr;
     width: 100%;
     height: 95%;
 }
@@ -91,16 +92,15 @@ body {
 /* defining styles for the top bar */
 
 #TopBar {
-    display: grid;
-    grid-column: 1 / -1;
-
-    grid-template-columns: 1fr 2fr 2fr;
-    grid-gap: 10px;
+    display: flex;
+    justify-content: space-between;
 
     background-color: var(--topBarBg);
     box-shadow: 0px 10px 10px var(--topBarShadow);
+
     z-index: 1;
-    width: auto;
+
+    height: 100px;
 
     padding: 10px;
     padding-left: 30px;
@@ -108,28 +108,30 @@ body {
 }
 
 #Counters {
+    box-sizing: border-box;
     display: flex;
-    justify-content: space-around;
-    place-content: center;
 
     background-color: var(--currencyBg);
     box-shadow: inset 0px 5px 10px black;
 
+    width: 20%;
+    height: 100%;
     border-radius: 15px;
-    padding: 20px;
+    padding: 10px;
     margin-left: 20px;
     margin-right: 20px;
 }
 
-#Counters  h2 {
+#Counters h2 {
     place-self: center;
-
     margin: 0px;
 }
 
-#Counters  img {
+#Counters img {
     place-self: center;
-    margin: 0px;
+    width: auto;
+    height: 50%;
+    margin-left: 10px;
 }
 
 /* defining styles for the upgrade panel */
@@ -138,7 +140,7 @@ body {
     display: inline-block;
     position: relative;
 
-    width: 100%;
+    width: 40%;
 }
 
 #ShopToggleButton {
@@ -211,6 +213,29 @@ body {
     margin: 10px;
 }
 
+#UpgradeShop div button div {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    width: 100%;
+    height: auto;
+}
+
+
+#UpgradeShop div button h4 {
+    display: inline;
+
+    height: 100%;
+}
+
+#UpgradeShop div button img {
+    display: inline;
+    box-sizing: border-box;
+    align-self: center;
+    width: 15%;
+    margin-left: 10px;
+}
+
 #UpgradeShop div button:hover {
     background-color: var(--shopButtonHoverBg);
 }
@@ -230,58 +255,57 @@ body {
     height: 100%;
 }
 
-#Slime {
+#Slime img {
     cursor: pointer;
 
-    place-items: center;
-}
-
-#Slime img {
+    display: block;
+    /* align-self: center; */
     width: 100%;
-    height: 200px;
+    height: auto;
 }
 
 /* hp bar style */
-
 #HPContainer {
+    z-index: 0;
     width: 400px;
     height: 100px;
     background-color: var(--hpBarBg);
     box-shadow: 0px 10px 5px var(--hpBarShadow);
 
-    border-radius: 15px;
+    margin-top: 20px;
     padding: 10px;
+    padding-bottom: 30px;
+}
+
+#HPContainer h4 {
+    text-shadow: 2px 2px 2px #000000;
+
+    padding: 0px;
+    margin: 0px;
+    margin-top: 5px;
 }
 
 #HPBar {
     background-color: var(--hpBarFill);
+
     box-shadow: inset 0px 5px 10px black;
-
-    align-content: center;
-    place-items: center;
-
-    /* width: 100%; */
-    height: 100%;
+    width: 400px;
+    height: 100px;
 
     border-radius: 15px;
 }
 
-#HPBar p {
-    padding: 0px;
-    margin: 0px;
-}
-
 /* cool down timer */
-#TimerContainer{
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
+#TimerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     width: 100%;
     height: 100%;
 }
 
-#TimerContainer h2{
+#TimerContainer h2 {
     align-self: center;
     align-content: center;
     place-items: center;

@@ -1,54 +1,117 @@
+/*
+--------------------------------------------------------------------------
+    js file for defining what a slime is
+--------------------------------------------------------------------------
+*/
 class Slime {
-    constructor(startingHp, hpBar, slimeBody) {
-        this.totalHp = startingHp;
-        this.currentHp = startingHp;
-        this.hpBar = hpBar;
-        this.slimeBody = slimeBody;
+    constructor(name, health, healthIncreaseAmt) {
+        this.name = name;
 
-        this.updateHpBar();
+        this.totalHealth = health;
+        this.currentHealth = health;
+        this.healthIncreaseAmt = healthIncreaseAmt;
+
+
+        this.isAlive = true;
+
+        this.healthBar = $('#HPContainer');
+        this.healthTxt = this.healthBar.find('h4');
+        this.healthDisplay = $('#HPBar');
+
+        this.damageTimer;
+
+        this.imgPath = "images/slime_";
+        this.imgExtension = ".png";
+
+        this.body = $('#SlimeSection').find('#Slime').find('img');
     }
 
-    /*
-    --------------------------------------------------------------------------
-        utility functions
-    --------------------------------------------------------------------------
-    */
-
-    //respawns the slime
-    respawn() {
-        this.currentHp = this.totalHp;
-        this.hpBar.fadeIn();
-        this.slimeBody.fadeIn();
-        this.updateHpBar();
+    //updates the health bar
+    updateHealthBar() {
+        var healthPercentage = this.currentHealth / this.totalHealth * 100;
+        this.healthDisplay.width(healthPercentage + '%');
+        this.healthTxt.text(this.name + ': ' + this.currentHealth + '/' + this.totalHealth);
     }
 
-    //updates the slimes hp bar
-    updateHpBar() {
-        var remainingHp = this.currentHp / this.totalHp * 100;
-        this.hpBar.find('#HPBar').width(remainingHp + '%');
-    }
-
-    /*
-    --------------------------------------------------------------------------
-        getters,setters,variable update function
-    --------------------------------------------------------------------------
-    */
-    //applies damage to the slime
+    //deals damage to the slime
     takeDamage(damage) {
-        if (this.currentHp > 0) {
-            this.currentHp -= damage;
-            this.updateHpBar();
-        }
-        if (this.currentHp <= 0) {
-            this.hpBar.fadeOut();
-            this.slimeBody.fadeOut();
+        clearTimeout(this.damageTimer);
+
+        if (this.isAlive) {
+            this.currentHealth -= damage;
+
+            var path = this.imgPath + "hit" + this.imgExtension;
+            this.body.attr('src', path);
+
+            if (this.currentHealth <= 0) {
+
+                var path = this.imgPath + "dead" + this.imgExtension;
+                this.body.attr('src', path);
+
+                this.currentHealth = 0;
+                this.isAlive = false;
+                this.body.fadeOut(500);
+                this.healthBar.fadeOut();
+
+                setTimeout(() => {
+                    this.isAlive = true;
+                    var path = this.imgPath + "norm" + this.imgExtension;
+                    this.body.attr('src', path);
+                    this.updateHealthBar();
+
+                }, 500);
+            }
+
+            else {
+                this.damageTimer = setTimeout(() => {
+                    var path = this.imgPath + "norm" + this.imgExtension;
+                    this.body.attr('src', path);
+                }, 1000);
+            }
+
+            this.updateHealthBar();
         }
     }
 
-    //returns if the slime is alive or not
-    isAlive() {
-        return this.currentHp > 0;
+    //respawns and makes the slime stronger
+    respawn() {
+        this.totalHealth += this.healthIncreaseAmt;
+        this.currentHealth = this.totalHealth;
+
+        // makes sure if first time spawning slime sprite is normal
+        //otherwise will switch once death timer is done
+        if (this.isAlive) {
+            var path = this.imgPath + "norm" + this.imgExtension;
+            this.body.attr('src', path);
+            this.updateHealthBar();
+        }
+
+        this.body.fadeIn();
+        this.healthBar.fadeIn();
+
     }
+
+    //respawns the slime without making it stronger
+    normalRespawn() {
+        this.currentHealth = this.totalHealth;
+
+        //makes sure if first time spawning slime sprite is normal
+        //otherwise will switch once death timer is done
+        if (this.isAlive) {
+            var path = this.imgPath + "norm" + this.imgExtension;
+            this.body.attr('src', path);
+            this.updateHealthBar();
+        }
+
+        this.body.fadeIn();
+        this.healthBar.fadeIn();
+    }
+
+    // returns if the slime is alive or not
+    isAlive() {
+        return this.isAlive;
+    }
+
 
 }
 

@@ -3,33 +3,34 @@
 */
 
 :root {
-    --mainBG: #6d6d6d;
+    --mainBGBot: #5b8a8f;
+    --mainBGTop: #252836;
 
-    --shopBg: #4c4c4c;
-    --shopShadow: #0a0a0a;
+    --shopBg: #283845;
+    --shopShadow: #000000;
     --shopTitleBg: #705555;
 
-    --topBarBg: #4c4c4c;
-    --topBarShadow: black;
+    --topBarBg: #283845;
+    --topBarShadow: #000000;
 
-    --currencyBg: #442d2d;
+    --currencyBg: #829191;
 
-    --TimerBG: #4c4c4c;
-    
+    --TimerBG: #829191;
+
     /* Hp bar */
-    --hpBarBg: #353333;
-    --hpBarShadow: #0a0a0a;
-    --hpBarFill: #a31010;
+    --hpBarBg: #454955;
+    --hpBarShadow: #0d0a0b;
+    --hpBarFill: #a10702;
 
     /* button styles */
-    --buttonBG: #a5a5a5;
-    --buttonHoverBg: #6d6d6d;
-    --buttonShadow: #0a0a0a;
+    --buttonBG: #586f7c;
+    --buttonHoverBg: #8daaa9;
+    --buttonShadow: #000000;
 
-    --shopButtonBG: #a5a5a5;
-    --shopButtonHoverBg: #6d6d6d;
+    --shopButtonBG: #586f7c;
+    --shopButtonHoverBg: #8daaa9;
     --shopButtonShadow: #0a0a0a;
 
-    --mainText: #dfd5d5;
+    --mainText: #edf2f4;
     --secondaryText: #aaa9a9;
 }
