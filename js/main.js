@@ -19,7 +19,11 @@ var slimePerClick = 1; // multiplier for how many slime balls you get per click
 var walkSpeed = 10; // speed of cool down between slime group spawns
 
 //slime variables
-var slimes = [new Slime("Blue Slime", 10, 10)]; // array of slimes
+var slimes = [
+    new Slime("Baby_Slime", 10, 10),
+    new Slime("Blue_Slime", 20, 10),
+
+]; // array of slimes
 var currentSlime = 0; // index of the current slime
 var slimeGroupSize = 0;
 var slimeGroupMaxSize = 5;
@@ -79,15 +83,13 @@ function attackSlime() {
         startTimer();
     }
 
-    //check how many slimes are in encounter
-    else if (!slimes[currentSlime].isAlive && slimeGroupSize > 0) {
+    else if (slimeGroupSize > 0 && !slimes[currentSlime].isAlive) {
         slimeGroupSize--;
-
         currentSlime = getSlimeIndex();
-        if (!slimes[currentSlime].isAlive) {
-            slimes[currentSlime].normalRespawn();
-        }
+
+        slimes[currentSlime].normalRespawn();
     }
+
 }
 
 
@@ -121,10 +123,10 @@ function StartEncounter() {
     }
     else {
         slimes[currentSlime].normalRespawn();
+
     }
 
     timer.fadeOut();
-
 }
 
 function getSlimeIndex() {

@@ -14,6 +14,8 @@ class shopButton {
         this.maxLvl = maxLvl;
         this.amountPerLvl = 1;
 
+        this.cantAffordTimer;
+
         this.statToUpgrade = statToUpgrade;
 
         this.button = document.createElement('button');
@@ -27,8 +29,8 @@ class shopButton {
         this.costText.textContent = "Cost: " + this.cost;
 
         this.slimeBallImg = document.createElement('img');
-        this.slimeBallImg.src = "images/SlimeBall.png";
-        this.slimeBallImg.alt = 'SlimeBall';
+        this.slimeBallImg.src = "images/slimeBall.png";
+        this.slimeBallImg.alt = 'slimeBall';
 
         this.contentDiv.appendChild(this.costText);
         this.contentDiv.appendChild(this.slimeBallImg);
@@ -68,8 +70,20 @@ class shopButton {
         }
 
         else {
-            console.log("Not enough slime balls");
+
+            clearTimeout(this.cantAffordTimer);
+
+            this.buttonTitle.textContent = "Not enough slime balls!!";
+            this.cantAffordTimer = setTimeout(() => {
+                this.buttonTitle.textContent = this.name + " | Max Level Reached";
+
+            }, 1000);
         }
+    }
+
+    //used to get css variables
+    getCSSVariableValue(variableName) {
+        return getComputedStyle(document.documentElement).getPropertyValue(variableName).trim();
     }
 }
 

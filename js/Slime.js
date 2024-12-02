@@ -11,7 +11,6 @@ class Slime {
         this.currentHealth = health;
         this.healthIncreaseAmt = healthIncreaseAmt;
 
-
         this.isAlive = true;
 
         this.healthBar = $('#HPContainer');
@@ -20,7 +19,8 @@ class Slime {
 
         this.damageTimer;
 
-        this.imgPath = "images/slime_";
+
+        this.imgPath = "images/" + this.name + "_";
         this.imgExtension = ".png";
 
         this.body = $('#SlimeSection').find('#Slime').find('img');
@@ -44,26 +44,19 @@ class Slime {
             this.body.attr('src', path);
 
             if (this.currentHealth <= 0) {
+                this.isAlive = false;
 
                 var path = this.imgPath + "dead" + this.imgExtension;
                 this.body.attr('src', path);
 
                 this.currentHealth = 0;
-                this.isAlive = false;
-                this.body.fadeOut(500);
+                this.body.fadeOut();
                 this.healthBar.fadeOut();
-
-                setTimeout(() => {
-                    this.isAlive = true;
-                    var path = this.imgPath + "norm" + this.imgExtension;
-                    this.body.attr('src', path);
-                    this.updateHealthBar();
-
-                }, 500);
             }
 
             else {
                 this.damageTimer = setTimeout(() => {
+                    this.deathTimerDone = true;
                     var path = this.imgPath + "norm" + this.imgExtension;
                     this.body.attr('src', path);
                 }, 1000);
@@ -78,13 +71,12 @@ class Slime {
         this.totalHealth += this.healthIncreaseAmt;
         this.currentHealth = this.totalHealth;
 
-        // makes sure if first time spawning slime sprite is normal
-        //otherwise will switch once death timer is done
-        if (this.isAlive) {
-            var path = this.imgPath + "norm" + this.imgExtension;
-            this.body.attr('src', path);
-            this.updateHealthBar();
-        }
+        this.isAlive = true;
+
+        var path = this.imgPath + "norm" + this.imgExtension;
+        this.body.attr('src', path);
+        this.updateHealthBar();
+        
 
         this.body.fadeIn();
         this.healthBar.fadeIn();
@@ -94,14 +86,12 @@ class Slime {
     //respawns the slime without making it stronger
     normalRespawn() {
         this.currentHealth = this.totalHealth;
+        this.isAlive = true;
 
-        //makes sure if first time spawning slime sprite is normal
-        //otherwise will switch once death timer is done
-        if (this.isAlive) {
-            var path = this.imgPath + "norm" + this.imgExtension;
-            this.body.attr('src', path);
-            this.updateHealthBar();
-        }
+
+        var path = this.imgPath + "norm" + this.imgExtension;
+        this.body.attr('src', path);
+        this.updateHealthBar();
 
         this.body.fadeIn();
         this.healthBar.fadeIn();
