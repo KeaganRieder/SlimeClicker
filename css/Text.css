@@ -3,31 +3,60 @@
 */
 @import url('Colors.css');
 
-h1{
+h1 {
+    font-family: "Fredoka", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 50;
+
     color: var(--mainText);
-    font-size: 3em;    
+    font-size: 4em;
+    margin:0px ;
 }
 
-h2{
+h2 {
+    font-family: "Fredoka", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 50;
+
     color: var(--mainText);
     font-size: 2em;
 }
 
-h3{
+h3 {
+    font-family: "Fredoka", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 50;
+
     color: var(--mainText);
-    font-size: 1.7em;    
+    font-size: 1.7em;
 }
 
-h4{
+h4 {
+    font-family: "Fredoka", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 50;
+
     color: var(--mainText);
-    font-size: 1.25em;
+    font-size: 1.5em;
 }
 
 
-.shadowText{
+.shadowText {
     text-shadow: 2px 2px 2px #000000;
 }
 
-.centeredText{
+.centeredText {
     text-align: center;
 }
