@@ -146,7 +146,11 @@ export function updateSlimeBallCount(amt) {
 }
 
 export function UpdateWalkSpeed(amt) {
-    walkSpeed += amt;
+    walkSpeed -= amt;
+    if (walkSpeed < 1) {
+        walkSpeed = 1;
+        
+    }
 }
 
 export function UpdateAttackDamage(amt) {
